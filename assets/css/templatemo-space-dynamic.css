@@ -1718,3 +1718,19 @@ responsive
     max-width: 70%;
   }
 }
+
+.about-us .services .item .icon {
+  float: right;
+  margin-right: 25px;
+}
+
+.flip {
+  display: inline-block;
+  perspective: 1000px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.flip.flipOut {
+  transform: rotateX(90deg);
+}
