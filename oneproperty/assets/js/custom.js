@@ -163,16 +163,38 @@ customElements.forEach(customElement => {
     tooltipTitle.innerText = title;
     tooltipDesc.innerText = desc;
 
-    customTooltip.style.top = event.clientY + 10 + 'px';
-    customTooltip.style.left = event.clientX + 10 + 'px';
+    var tooltipWidth = customTooltip.offsetWidth;
+    var mouseX = event.clientX;
+    var windowWidth = window.innerWidth;
+
+    // Menentukan posisi tooltip berdasarkan posisi kursor mouse
+    if (mouseX > windowWidth / 2) {
+        customTooltip.style.left = (mouseX - tooltipWidth - 20) + 'px'; // Menampilkan tooltip di sebelah kiri mouse
+    } else {
+        customTooltip.style.left = (mouseX + 20) + 'px'; // Menampilkan tooltip di sebelah kanan mouse
+    }
+
+    // Tetapkan posisi vertikal tooltip pada posisi kursor mouse
+    customTooltip.style.top = (event.clientY + 20) + 'px'; // Menampilkan tooltip di bawah mouse
+	
     customTooltip.style.display = 'block';
   });
 
   customElement.addEventListener('mousemove', function(event) {
-    customTooltip.style.top = event.clientY + 10 + 'px';
-    customTooltip.style.left = event.clientX + 10 + 'px';
-	console.log('masuk')
-  });
+    var tooltipWidth = customTooltip.offsetWidth;
+    var mouseX = event.clientX;
+    var windowWidth = window.innerWidth;
+
+    // Menentukan posisi tooltip berdasarkan posisi kursor mouse
+    if (mouseX > windowWidth / 2) {
+        customTooltip.style.left = (mouseX - tooltipWidth - 20) + 'px'; // Menampilkan tooltip di sebelah kiri mouse
+    } else {
+        customTooltip.style.left = (mouseX + 20) + 'px'; // Menampilkan tooltip di sebelah kanan mouse
+    }
+
+    // Tetapkan posisi vertikal tooltip pada posisi kursor mouse
+    customTooltip.style.top = (event.clientY + 20) + 'px'; // Menampilkan tooltip di bawah mouse
+});
 
   customElement.addEventListener('mouseout', function(event) {
     customTooltip.style.display = 'none';
