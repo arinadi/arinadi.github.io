@@ -181,12 +181,29 @@ var texts = ["Code", "Build", "Deploy"];
 var flipText = document.getElementById("flipText");
 
 function flip() {
-    flipText.classList.add("flipOut");
-    setTimeout(function() {
-        flipText.innerText = texts[textIndex];
-        flipText.classList.remove("flipOut");
-        textIndex = (textIndex + 1) % texts.length;
-    }, 500); // Adjust timing accordingly
+  flipText.classList.add("flipOut");
+  setTimeout(function () {
+    flipText.innerText = texts[textIndex];
+    flipText.classList.remove("flipOut");
+    textIndex = (textIndex + 1) % texts.length;
+  }, 500); // Adjust timing accordingly
 }
 
 setInterval(flip, 2000); // Adjust interval accordingly
+
+$('.modal-trigger').on('click', function () {
+  // Mengambil src gambar dari img di dalam div yang sama
+  var src = $(this).closest('.item').find('img').attr('src');
+  // Mengambil judul dari H4 di dalam div yang sama
+  var title = $(this).closest('.item').find('h4').text();
+  // Mengambil deskripsi dari P di dalam div yang sama
+  var description = $(this).closest('.item').find('p').text();
+  // Mengganti src gambar di modal dengan src gambar yang diklik
+  $('#modalImage').attr('src', src);
+  // Mengganti judul modal dengan judul dari H4 yang diambil
+  $('#imageModalLabel').text(title);
+  // Mengganti deskripsi modal dengan deskripsi dari P yang diambil
+  $('#modalDescription').text(description);
+  // Menampilkan modal
+  $('#imageModal').modal('show');
+});
